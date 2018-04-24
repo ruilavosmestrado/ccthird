@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Social Media</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">SocMedia</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="messageboard.html">Message Board</a></li>
+            <li class="active"><a href="messages.html">Messages<span class="sr-only">(current)</span></a></li>
+            <li><a href="users.html">People</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mike Gulvishvokov<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="myaccount.html">My Account</a></li>
+                <li><a href="change_password.html">Change Password</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <div class="container">
+
+
+      <section class="common-box">
+      <div class="container">
+        <div class="row main">
+             <div class="content-header-2">
+                <h3 class="text-center">Message Search</h3>
+              </div>
+            <div class="content-subheader-2 row">
+                <form action="#" method="GET">
+                  <div class="col-xs-12 col-sm-9">
+                    <div class="input-group">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                      <input id="username" type="text" class="form-control" name="username" placeholder="Enter UserName Filter">
+                    </div>
+                    <div class="input-group">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-text-size" aria-hidden="true"></span></span>
+                      <input id="msgtext" type="text" class="form-control" name="msgtext" placeholder="Enter Message Text Filter">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-3">
+                    <div class="form-group searchbtn-area">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block restricted-button" name="btnSend" value="Search">
+                    </div>
+                  </div>
+                </form>   
+            </div>
+            <div class="content-subheader-2 row">
+                <ul class="pagination pagination-lg">
+                  <li><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li class="active"><a href="#">3</a></li>
+                  <li><a href="#">4</a></li>
+                  <li><a href="#">5</a></li>
+                </ul>
+            </div>
+            <div class="main-content-2">
+                    <ul class="chat">
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/522.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mike Gulvishvokov</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 14-04-2017 18:23:12</small>
+                                </div>
+                                <p>
+                                      Lorem xercitation 
+                                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/474.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">John Gerginokish</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 14-04-2017 12:10:02</small>
+                                </div>
+                                <p>
+                                      LoremLorem ips is aute irure dolor in reprehenderit in voluptate velit esse
+                                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                           <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mirtoil Jovik</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 14-04-2017 08:23:11</small>
+                                </div>
+                                <p> 
+                                    lorepLorem dunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                </p>
+                            </div>
+                            <div class="chat-msgimg">
+                              <a href="original_image.html"><img src="img_msg/r-msg32467.jpg" alt="Image associated to message number 32467"></a>
+                            </div>
+                        </li>                        
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/522.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mike Gulvishvokov</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 13-04-2017 23:45:45</small>
+                                </div>
+                                <p>
+                                      He Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                      tempor incidi
+                                </p>
+                            </div>
+                        </li>                    
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/506.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 13-04-2017 21:12:03</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/408.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Anne Patel</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 13-04-2017 19:23:21</small>
+                                </div>
+                                <p>
+                                    Lorem  deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/506.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 13-04-2017 19:22:43</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare
+                                    dolor, quis ullamcorper ligula sodales.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/408.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Anne Patel</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 13-04-2017 19:22:34</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                            <div class="chat-msgimg">
+                              <a href="original_image.html"><img src="img_msg/r-msg32902.jpg" alt="Image associated to message number 32902"></a>
+                            </div>                            
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                           <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Bhaumik Patel</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 13-04-2017 08:12:49</small>
+                                </div>
+                                <p>
+                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/408.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Anne Patel</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 21:43:34</small>
+                                </div>
+                                <p>
+                                    Bla Bla Bla... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/492.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Joanha Mirkckociv</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 21:09:34</small>
+                                </div>
+                                <p>
+                                    LorLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do  esse
+                                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                            <div class="chat-msgimg">
+                              <a href="original_image.html"><img src="img_msg/r-msg31565.jpg" alt="Image associated to message number 31565"></a>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/443.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mary Hirthus</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 21:21:01</small>
+                                </div>
+                                <p>
+                                      Lorem i anim id est laborum.
+                                </p>
+                            </div>
+                            <div class="chat-msgimg">
+                              <a href="original_image.html"><img src="img_msg/r-msg32467.jpg" alt="Image associated to message number 32467"></a>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/467.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Eva Thompson</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 20:53:12</small>
+                                </div>
+                                <p>
+                                      Lorem xercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/443.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mary Hirthus</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 16:12:04</small>
+                                </div>
+                                <p>
+
+                                </p>
+                            </div>
+                            <div class="chat-msgimg">
+                              <a href="original_image.html"><img src="img_msg/msg32467.jpg" alt="Image associated to message number 32467"></a>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/474.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">John Gerginokish</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 16:11:54</small>
+                                </div>
+                                <p>
+                                      LoremLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                      cillum 
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                           <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mirtoil Jovik</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 16:09:43</small>
+                                </div>
+                                <p> 
+                                    lorepLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                </p>
+                            </div>
+                        </li>                        
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/522.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mike Gulvishvokov</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 15:59:53</small>
+                                </div>
+                                <p>
+                                      Lorem xercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                                      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/474.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">John Gerginokish</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 13:53:24</small>
+                                </div>
+                                <p>
+                                      LoremLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                                      cillum 
+                                </p>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                           <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mirtoil Jovik</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 12:53:11</small>
+                                </div>
+                                <p> 
+                                    lorepLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                                </p>
+                            </div>
+                        </li>                        
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/522.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="chat-body clearfix">
+                                <div class="header">
+                                    <strong class="primary-font">Mike Gulvishvokov</strong> <small class="pull-right text-muted">
+                                        <span class="glyphicon glyphicon-time"></span> 12-04-2017 09:27:39</small>
+                                </div>
+                                <p>
+                                      He Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                                      tempor incidi
+                                </p>
+                            </div>
+                        </li>
+
+                    </ul>
+            </div>
+          </div>
+      </div>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
