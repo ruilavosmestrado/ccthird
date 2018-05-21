@@ -1,39 +1,24 @@
 'use strict';
 
-const instance = axios.create();
-
 $('#signInButton').on('click', function(event) {
-	//event.preventDefault();
-	/* Act on the event */
-	console.log('ola');
 
-	instance.get('localhost:3000/').catch(function(error) {
-  		if (!error.status) {
-    		console.log('e: ' + error.response);
-  		}
-	});
-	/*axios.get('/', {
-		proxy: {
-    		host: '127.0.0.1',
-    		port: 3000,
-  		}
-	});*/
+  var postData = {
+      email: $("#username").val(),
+      password: $("#password").val()
+  };
 
-	/*axios({
-  		method: 'get',
-  		url: '/',
-  		proxy: {
-    		host: '127.0.0.1',
-    		port: 3000,
-  		},
-  		responseType: 'stream'
-	});*/
+  let axiosConfig = {
+      headers: {
+          "Content-Type": "application/json"
+      },
+      crossdomain: true
+  };
+
+  axios.post('http://localhost:3000/user/login', postData, axiosConfig)
+    .then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    });
 });
-
-/*axios.get('/')
-	.then(function (response) {
-	    console.log(response);
-  	})
-  	.catch(function (error) {
-    	console.log(error);
-  	});*/
