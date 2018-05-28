@@ -1,11 +1,128 @@
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
+const crypto = require('crypto');
+const config = require('../../config/DB');
+const AWS = require("aws-sdk");
 
-const User = require("../models/user");
+AWS.config.update({accessKeyId: config.ACCESS_KEY, secretAccessKey: config.SECRET_KEY, region: "eu-west-1"});
+
+var docClient = new AWS.DynamoDB.DocumentClient();
+
+//const User = require("../models/user");
+const userTable = "user";
 
 exports.user_signup = (req, res, next) => {
-  User.find({ email: req.body.email })
+  	if(!req.body.username || !req.body.password || !req.body.name){
+    	return res.status(409).json({
+        	message: "Required fields missing"
+      	});
+  	}
+
+  	const cipher = crypto.createCipher('aes192', req.body.password);
+	let encrypted = '';
+	cipher.on('readable', () => {
+  		const data = cipher.read();
+  		if (data) encrypted += data.toString('hex');
+	});
+
+	cipher.write('superproject');
+	cipher.end();
+
+	var params = {
+    	TableName : userTable,
+    	KeyConditionExpression: "userid = :username",
+    	ExpressionAttributeValues: {
+        	":username":req.body.username
+    	}	
+	};
+
+	docClient.query(params, function(err, data) {
+    	if (err) {
+    		//console.log('rui2');
+        	res.status(500).json({error: err});
+    	} else {
+        	console.log("Query succeeded.");
+        	if(data.Items.length > 0){
+         		console.log(err);
+                res.status(500).json({error: err});
+       		}
+    	}
+	});
+
+ 	params = {
+    	TableName: userTable,
+    	Item:{
+        	"userid":req.body.username,
+        	"username": req.body.username,
+        	"password": encrypted,
+        	"name":req.body.name,
+        	"img_photo":"https://s3-eu-west-1.amazonaws.com/iplproject/nophoto.jpg" //nophoto
+    	}
+	};
+
+	console.log("Adding a new user...");
+ 	docClient.put(params, function(err, data) {
+    	if (err) {
+        	res.status(500).json({error: err});
+    	} else {
+        	res.status(201).json({message: "User created"});
+    	}
+	});
+};
+
+exports.user_login = (req, res, next) => {
+	const cipher = crypto.createCipher('aes192', req.body.password);
+	let encrypted = '';
+	cipher.on('readable', () => {
+  		const data = cipher.read();
+  		if (data) encrypted += data.toString('hex');
+	});
+
+	cipher.write('superproject');
+	cipher.end();
+
+	if(!req.body.username || !req.body.password){
+    	context.fail(JSON.stringify({status:'fail', reason:'Password or Username Inválid', foo:'bar'})); 
+    	return;
+	}
+
+	var params = {
+    	TableName : userTable,
+    	KeyConditionExpression: "userid = :username",
+    	ExpressionAttributeValues: {
+        	":username":req.body.username
+    	}
+	};
+
+	docClient.query(params, function(err, data) {
+    	if (err) {
+        	console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+    	} else {
+        	console.log("Query succeeded.");
+        	if(data.Items.length > 0) {
+        		data.Items.forEach(function(item) {
+            		console.log(" -", item.name + ": " + item.username);
+            	
+            		if(item.password == encrypted) {
+                		callback(null, "Login OK");    
+            		} else {
+                		context.fail(JSON.stringify({status:'fail', reason:'Password or Username Inválid', foo:'bar'})); 
+            		}
+        		});
+        	} else {
+            	context.fail(JSON.stringify({status:'fail', reason:'User not exists!', foo:'bar'})) 
+        	}
+    	}
+	});
+};
+
+exports.user_delete = (req, res, next) => {
+};
+
+
+
+  /*User.find({ email: req.body.email })
     .exec()
     .then(user => {
       if (user.length >= 1) {
@@ -42,9 +159,9 @@ exports.user_signup = (req, res, next) => {
         });
       }
     });
-};
+};*/
 
-exports.user_login = (req, res, next) => {
+/*exports.user_login = (req, res, next) => {
   User.find({ email: req.body.email })
     .exec()
     .then(user => {
@@ -86,9 +203,9 @@ exports.user_login = (req, res, next) => {
         error: err
       });
     });
-};
+};*/
 
-exports.user_delete = (req, res, next) => {
+/*exports.user_delete = (req, res, next) => {
   User.remove({ _id: req.params.userId })
     .exec()
     .then(result => {
@@ -102,4 +219,4 @@ exports.user_delete = (req, res, next) => {
         error: err
       });
     });
-};
+};*/
