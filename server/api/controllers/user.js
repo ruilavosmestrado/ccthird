@@ -72,6 +72,7 @@ exports.user_signup = (req, res, next) => {
 };
 
 exports.user_login = (req, res, next) => {
+  console.log('rui login');
 	const cipher = crypto.createCipher('aes192', req.body.password);
 	let encrypted = '';
 	cipher.on('readable', () => {
@@ -83,7 +84,7 @@ exports.user_login = (req, res, next) => {
 	cipher.end();
 
 	if(!req.body.username || !req.body.password){
-    	context.fail(JSON.stringify({status:'fail', reason:'Password or Username Inválid', foo:'bar'})); 
+    	res.status(500).json({error: 'err1'});
     	return;
 	}
 
@@ -97,7 +98,8 @@ exports.user_login = (req, res, next) => {
 
 	docClient.query(params, function(err, data) {
     	if (err) {
-        	console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+        	//console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
+          res.status(500).json({error: err}); 
     	} else {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0) {
@@ -105,13 +107,13 @@ exports.user_login = (req, res, next) => {
             		console.log(" -", item.name + ": " + item.username);
             	
             		if(item.password == encrypted) {
-                		callback(null, "Login OK");    
+                		res.status(201).json({message: "Login OK"});    
             		} else {
-                		context.fail(JSON.stringify({status:'fail', reason:'Password or Username Inválid', foo:'bar'})); 
+                		res.status(500).json({error: 'err2'}); 
             		}
         		});
         	} else {
-            	context.fail(JSON.stringify({status:'fail', reason:'User not exists!', foo:'bar'})) 
+            	res.status(500).json({error: 'err3'}); 
         	}
     	}
 	});

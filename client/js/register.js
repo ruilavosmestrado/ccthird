@@ -20,19 +20,15 @@ $('#signUpButton').on('click', function(event) {
    		password: password
 	};
 
-  	/*if (password !== confirm) {
-      	//erro
-  	} else {
-    	var postData = {
-      		username: username,
-      		name: name,
-      		password: password
-  		};
-  	}	*/
-
-  	axios.post('http://localhost:3000/user/signup', postData, axiosConfig)
+  	axios.post('http://localhost:8080/user/signup', postData, axiosConfig)
     	.then((res) => {
       		console.log("RESPONSE RECEIVED: ", res);
+          //window.location.assign("../messageboard.html");
+          //window.open("../messageboard.html",'_self');
+          //window.location.replace("../messageboard.html");
+          //window.location.href = "messageboard.html";
+          $(location).attr('href', '../messageboard.html');
+          return false;
     	})
     	.catch((err) => {
       		console.log("AXIOS ERROR: ", err);
