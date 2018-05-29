@@ -17,6 +17,7 @@ $('#signInButton').on('click', function(event) {
   axios.post('http://localhost:8080/user/login', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
+      $(location).attr('href', 'messageboard.html');
     })
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);

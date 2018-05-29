@@ -23,12 +23,7 @@ $('#signUpButton').on('click', function(event) {
   	axios.post('http://localhost:8080/user/signup', postData, axiosConfig)
     	.then((res) => {
       		console.log("RESPONSE RECEIVED: ", res);
-          //window.location.assign("../messageboard.html");
-          //window.open("../messageboard.html",'_self');
-          //window.location.replace("../messageboard.html");
-          //window.location.href = "messageboard.html";
-          $(location).attr('href', '../messageboard.html');
-          return false;
+          $(location).attr('href', './login.html');
     	})
     	.catch((err) => {
       		console.log("AXIOS ERROR: ", err);
