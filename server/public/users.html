@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Social Media</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">SocMedia</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="messageboard.html">Message Board</a></li>
+            <li><a href="messages.html">Messages</a></li>
+            <li class="active"><a href="users.html">People<span class="sr-only">(current)</span></a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Mike Gulvishvokov<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="profile.html">My Profile</a></li>
+                <li><a href="myaccount.html">My Account</a></li>
+                <li><a href="change_password.html">Change Password</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="index.html">Logout</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container">
+      <section class="common-box">
+      <div class="container">
+        <div class="row main">
+             <div class="content-header-2">
+                <h3 class="text-center">Users Search</h3>
+              </div>
+            <div class="content-subheader-2 row">
+                <form action="#" method="GET">
+                  <div class="col-xs-12 col-sm-9">
+                    <div class="input-group">
+                      <span class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                      <input id="username" type="text" class="form-control" name="username" placeholder="Enter UserName Filter">
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-3">
+                    <div class="form-group searchbtn-area-sm">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block restricted-button" name="btnSend" value="Search">
+                    </div>
+                  </div>
+                </form>   
+            </div>
+            <div class="content-subheader-2 row">
+                <ul class="pagination pagination-lg">
+                  <li class="active"><a href="#">1</a></li>
+                  <li><a href="#">2</a></li>
+                  <li><a href="#">3</a></li>
+                </ul>
+            </div>
+            <div class="main-content-2">
+                    <ul class="chat">
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/408.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Anne Patel</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Beatrice Picman</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Bhaumik Patel</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>                        
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Carlos Silva</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/467.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Eva Thompson</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/495.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Filipa Oliveira</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                </div>
+                            </div>
+                        </li> 
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/459.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Filipe Godinho</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/506.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Jack Sparrow</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/492.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Joanha Mirkckociv</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>                        
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/474.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">John Gerginokish</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/435.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Luis Armweak</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/501.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Martin Lovosvky</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/443.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Mary Hirthus</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>                          
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Mary Jane</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>   
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/428.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Mia Travistson</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/522.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Mike Gulvishvokov</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Mirtoil Jovik</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li>
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/431.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Paula Rebocho</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/438.png" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Sara Matias</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>
+                                </div>
+                            </div>
+                        </li> 
+                       <li class="left clearfix"><span class="chat-img pull-left">
+                            <img src="img_photo/443.jpg" alt="User Avatar" class="img-circle" />
+                        </span>
+                            <div class="userlist-body clearfix">
+                                <div class="header headername">
+                                    <strong class="primary-font">Sophie Dusterry</strong>
+                                </div>
+                                <div class="buttonRight">
+                                    <button type="button" class="btn btn-md btn-success">
+                                      <span class="glyphicon glyphicon-plus"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </li> 
+             </ul>
+            </div>
+          </div>
+      </div>
+      </section>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script type="text/javascript" src="js/register.js"></script>
+  </body>
+</html>
