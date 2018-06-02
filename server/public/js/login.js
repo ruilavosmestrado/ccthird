@@ -14,7 +14,7 @@ $('#signInButton').on('click', function(event) {
       crossdomain: true
   };
 
-  axios.post('http://localhost:3000/user/login', postData, axiosConfig)
+  axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/login', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       $(location).attr('href', 'messageboard.html');
