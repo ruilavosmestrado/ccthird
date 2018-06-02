@@ -14,7 +14,7 @@ $('#signInButton').on('click', function(event) {
       crossdomain: true
   };
 
-  axios.post('http://localhost:8080/user/login', postData, axiosConfig)
+  axios.post('http://localhost:3000/user/login', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       $(location).attr('href', 'messageboard.html');

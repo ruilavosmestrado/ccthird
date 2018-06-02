@@ -20,7 +20,7 @@ $('#signUpButton').on('click', function(event) {
    		password: password
 	};
 
-  	axios.post('http://localhost:8080/user/signup', postData, axiosConfig)
+  	axios.post('http://localhost:3000/user/signup', postData, axiosConfig)
     	.then((res) => {
       		console.log("RESPONSE RECEIVED: ", res);
           $(location).attr('href', './login.html');
