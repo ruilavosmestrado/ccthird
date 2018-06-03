@@ -39,8 +39,7 @@ exports.user_signup = (req, res, next) => {
 
 	docClient.query(params, function(err, data) {
     	if (err) {
-    		//console.log('rui2');
-        	res.status(500).json({error: err});
+    		res.status(500).json({error: err});
     	} else {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0){
@@ -98,8 +97,7 @@ exports.user_login = (req, res, next) => {
 
 	docClient.query(params, function(err, data) {
     	if (err) {
-        	//console.error("Unable to query. Error:", JSON.stringify(err, null, 2));
-          res.status(500).json({error: err}); 
+          	res.status(500).json({error: err}); 
     	} else {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0) {
@@ -107,13 +105,21 @@ exports.user_login = (req, res, next) => {
             		console.log(" -", item.name + ": " + item.username);
             	
             		if(item.password == encrypted) {
-                		res.status(201).json({message: "Login OK"});    
+            			const token = jwt.sign(
+  						{
+              				username: item.username,
+            			},
+            			process.env.JWT_KEY,
+           				{
+              				expiresIn: "1h"
+           	 			});
+                		return res.status(201).json({message: "Login OK", token: token, user: item.username});    
             		} else {
-                		res.status(500).json({error: 'err2'}); 
+                		res.status(500).json({error: 'Wrong Password or Username'}); 
             		}
         		});
         	} else {
-            	res.status(500).json({error: 'err3'}); 
+            	res.status(500).json({error: 'No user found'}); 
         	}
     	}
 	});

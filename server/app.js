@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
-//const mongoose = require("mongoose");
 const config = require('./config/DB');
 const AWS = require("aws-sdk");
 
@@ -10,15 +9,9 @@ AWS.config.update({accessKeyId: config.ACCESS_KEY, secretAccessKey: config.SECRE
 
 var docClient = new AWS.DynamoDB.DocumentClient();
 
-const productRoutes = require("./api/routes/products");
-const orderRoutes = require("./api/routes/orders");
+const friendRoutes = require("./api/routes/friends");
+const messageRoutes = require("./api/routes/messages");
 const userRoutes = require('./api/routes/user');
-
-/*mongoose.connect(config.DB).then(
-  () => {console.log('Database is connected') },
-  err => { console.log('Can not connect to the database'+ err)}
-);
-mongoose.Promise = global.Promise;*/
 
 app.use(morgan("dev"));
 app.use(express.static('public'))
@@ -40,9 +33,9 @@ app.use((req, res, next) => {
 });
 
 // Routes which should handle requests
-app.use("/products", productRoutes);
-app.use("/orders", orderRoutes);
 app.use("/user", userRoutes);
+app.use("/friends", friendRoutes);
+app.use("/messages", messageRoutes);
 
 /*var params = {
     TableName : "User",
