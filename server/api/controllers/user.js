@@ -120,6 +120,7 @@ exports.user_login = (req, res, next) => {
         		});
         	} else {
             	res.status(500).json({error: 'No user found'}); 
+            	
         	}
     	}
 	});
@@ -128,6 +129,51 @@ exports.user_login = (req, res, next) => {
 exports.user_delete = (req, res, next) => {
 };
 
+exports.get_all_users = (req, res, next) => {
+  var params = {
+      TableName : userTable,
+  };
+
+  docClient.scan(params, function(err, data) {
+      if (err) {
+        res.status(500).json({error: err});
+      } else {
+          console.log("Query succeeded.");
+          if(data.Items.length <= 0){
+            console.log(err);
+            res.status(500).json({error: err});
+          }
+          res.status(201).json({data: data.Items});
+      }
+  });
+};
+
+exports.search_user = (req, res, next) => {
+  console.log('user ' + req.body.username);
+
+  var params = {
+      TableName : userTable,
+      KeyConditionExpression: "userid = :username",
+      ExpressionAttributeValues: {
+          ":username":req.body.username
+      }
+  };
+
+  docClient.query(params, function(err, data) {
+      if (err) {
+        res.status(500).json({error: err});
+        console.log("pedroErro n1");
+      } else {
+          console.log("Query succeeded.");
+          if(data.Items.length <= 0){
+            console.log(err);
+            res.status(500).json({error: err});
+            console.log("pedroErro n2");
+          }
+          res.status(201).json({data: data.Items});
+      }
+  });
+};
 
 
   /*User.find({ email: req.body.email })
