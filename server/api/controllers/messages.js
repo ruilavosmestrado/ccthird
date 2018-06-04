@@ -8,6 +8,7 @@ const AWS = require("aws-sdk");
 AWS.config.update({accessKeyId: config.ACCESS_KEY, secretAccessKey: config.SECRET_KEY, region: "eu-west-1"});
 
 var docClient = new AWS.DynamoDB.DocumentClient();
+var s3 = new AWS.S3();
 
 const messageTable = "message";
 const friendTable = "friend";
@@ -52,11 +53,13 @@ exports.get_messages = (req, res, next) => {
         		});
 
         		if (friendsAndUser.length <= 1) {
+        			console.log('rui ha msgs2');
             		//res.status(201).json({message: "Found Friends"});
             		friendsAndUser = [];
             		res.status(500).json({error: 'No friends for You!'});
             	}
         	} else {
+        		console.log('rui ha msgs3');
             	res.status(500).json({error: 'No friends available'}); 
         	}
     	}
@@ -79,13 +82,13 @@ exports.get_messages = (req, res, next) => {
             		if (friendsAndUser.indexOf(item.userid) != -1) {
             			messages.push(item);
             		}
-
-            		if (messages.length > 0) {
+        		});
+        		if (messages.length > 0) {
+            			console.log('rui ha msgs');
             			res.status(201).json({message: "Messages", messages: messages});
             		} else {
             			res.status(500).json({error: 'No messages'}); 
             		}
-        		});
         	} else {
             	res.status(500).json({error: 'No messages available'}); 
         	}
@@ -94,13 +97,34 @@ exports.get_messages = (req, res, next) => {
 };
 
 exports.create_message = (req, res, next) => {
-	params = {
+
+	let encodedImage = JSON.parse(req.body.img);
+    let decodedImage = new Buffer(encodedImage.replace(/^data:image\/\w+;base64,/, ""), 'base64');
+	var filePath = "images/"+ req.body.userid + req.body.datetime + ".jpg";
+    var paramsS3 = {
+        "Body": decodedImage,
+        "Bucket": "ccthird",
+        "Key": filePath,
+        "ContentEncoding": "base64",
+        "ContentType" :"image/jpeg",
+        "ACL": "public-read"
+    };
+
+    s3.putObject(paramsS3, function(err, data){
+        if(err) {
+        	console.log('ruierr', err)
+           //callback(err, null);
+           return;
+        }
+    });
+
+	var params = {
     	TableName: messageTable,
     	Item:{
         	"msgid": req.body.userid + req.body.datetime,
         	"userid": req.body.userid,
         	"datetime": req.body.datetime,
-        	"img": req.body.img,
+        	"img": "https://s3.eu-west-1.amazonaws.com/ccthird/" + filePath,
         	"img_original": req.body.img,
         	"text":req.body.text 
     	}

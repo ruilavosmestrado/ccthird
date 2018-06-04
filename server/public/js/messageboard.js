@@ -19,6 +19,29 @@ $(document).ready(function() {
   	axios.get('http://localhost:3000/messages/', axiosConfig)
     	.then((res) => {
       		console.log("RESPONSE RECEIVED: ", res);
+
+      		res.data.messages.forEach(function (mes) {
+      			console.log('rui', mes);
+      			$(".chat").append( '<li class="left clearfix"><span class="chat-img pull-left">' +
+                            				'<img src="img_photo/522.jpg" alt="User Avatar" class="img-circle" />' +
+                        					'</span>' +
+                            					'<div class="chat-body clearfix">' +
+                                					'<div class="header">' +
+                                    					'<strong class="primary-font">' + mes.userid + '</strong> <small class="pull-right text-muted">' +
+                                        				'<span class="glyphicon glyphicon-time"></span>' + mes.datetime + '</small>' +
+                                					'</div>' +
+                                					'<p>' +
+                                     					mes.text +
+                                					'</p>' +
+                            					'</div>' + 
+                            					'<div class="chat-msgimg">' +
+                              						'<a href="original_image.html"><img src="' + mes.img + '" alt="Image associated to message number 32467"></a>' +
+                            					'</div>' +
+                        				'</li>');
+      		});
+      				
+
+      		
       		//$(location).attr('href', 'messageboard.html');
     	})
     	.catch((err) => {
@@ -30,17 +53,10 @@ $(document).ready(function() {
 $('#envio').on("submit", function(event) {
 	event.preventDefault();
 
-	//console.log('submit message', $("#msgimg").file[0]);
+	var reader;
+	var img;
 
-	// post new message
-	var postData = {
-      	userid: JSON.parse(localStorage.getItem('user')),
-      	datetime: new Date(),
-      	text: $("#msgtext").val(),
-      	img: $("#msgimg").val(),
-  	};
-
-  	let axiosConfig = {
+	let axiosConfig = {
       	headers: {
           	"Content-Type": "application/json",
           	'Authorization': "Bearer " + localStorage.getItem('token')
@@ -48,9 +64,41 @@ $('#envio').on("submit", function(event) {
       	crossdomain: true
   	};
 
-  	axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
-    	.then((res) => {
-      		console.log("RESPONSE RECEIVED: ", res);
+	if (document.getElementById("msgimg").files.length > 0) {
+		console.log('yey');
+		reader = new FileReader();
+		reader.readAsDataURL(document.getElementById('msgimg').files[0]);
+		reader.onload = function () {
+			var postData = {
+      			userid: JSON.parse(localStorage.getItem('user')),
+      			datetime: new Date(),
+      			text: $("#msgtext").val(),
+      			img: JSON.stringify(reader.result)
+  			};
+
+  			axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
+    			.then((res) => {
+      				console.log("RESPONSE RECEIVED: ", res);
+
+      				
+    			})
+    			.catch((err) => {
+    			console.log('ruie2');
+      			console.log("AXIOS ERROR: ", err);
+    		});
+		}
+	} else {
+		// post new message
+		var postData = {
+      		userid: JSON.parse(localStorage.getItem('user')),
+      		datetime: new Date(),
+      		text: $("#msgtext").val(),
+      		img: null
+  		};
+
+  		axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
+    		.then((res) => {
+      			console.log("RESPONSE RECEIVED: ", res);
 
       		/*
 				<li class="left clearfix"><span class="chat-img pull-left">
@@ -70,11 +118,14 @@ $('#envio').on("submit", function(event) {
       		*/
 
       		//$(location).attr('href', 'messageboard.html');
-    	})
-    	.catch((err) => {
-    		console.log('ruie2');
-      		console.log("AXIOS ERROR: ", err);
-    	});
+    		})
+    		.catch((err) => {
+    			console.log('ruie2');
+      			console.log("AXIOS ERROR: ", err);
+    		});
 
 	// get all messages
+	}
+
+	
 });
