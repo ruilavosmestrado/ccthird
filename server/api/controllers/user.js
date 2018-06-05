@@ -60,31 +60,33 @@ exports.user_signup = (req, res, next) => {
          		console.log(err);
                 res.status(400).json({error: 'user duplicated'});
                 return;
-       		}
-    	}
-	});
+       		} else {
+                params = {
+                    TableName: userTable,
+                    Item:{
+                        "userid":req.body.username,
+                        "username": req.body.username,
+                        "password": encrypted,
+                        "name":req.body.name,
+                        "img_photo":"https://s3-eu-west-1.amazonaws.com/iplproject/nophoto.jpg" //nophoto
+                    }
+                };
 
- 	params = {
-    	TableName: userTable,
-    	Item:{
-        	"userid":req.body.username,
-        	"username": req.body.username,
-        	"password": encrypted,
-        	"name":req.body.name,
-        	"img_photo":"https://s3-eu-west-1.amazonaws.com/iplproject/nophoto.jpg" //nophoto
-    	}
-	};
-
-	console.log("Adding a new user...");
- 	docClient.put(params, function(err, data) {
-    	if (err) {
-        	res.status(500).json({error: err});
-            return;
-    	} else {
-        	return res.status(201).json({message: "User created"});
+                console.log("Adding a new user...");
+                docClient.put(params, function(err, data) {
+        
+                    if (err) {
+                        res.status(500).json({error: err});
+                        return;
+                    } else {
+                        return res.status(201).json({message: "User created"});
             
+                    }
+                });
+            }
     	}
 	});
+ 	
 };
 
 exports.user_login = (req, res, next) => {
