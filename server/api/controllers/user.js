@@ -25,12 +25,7 @@ exports.user_signup = (req, res, next) => {
         username = req.body.username;
     }
 
-    if (!username) {
-        return res.status(409).json({
-            message: "Required fields missing"
-        });
-
-  	if(!req.body.password || !req.body.name){
+  	if(!username || !req.body.password || !req.body.name){
     	return res.status(409).json({
         	message: "Required fields missing"
       	});
