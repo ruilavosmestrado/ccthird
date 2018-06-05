@@ -6,10 +6,9 @@ const checkAuth = require('../middleware/check-auth');
 
 router.post("/signup", UserController.user_signup);
 router.post("/login", UserController.user_login);
-router.delete("/:userId", checkAuth, UserController.user_delete);
-router.get("/all", UserController.get_all_users);
-router.post("/searchUser", UserController.search_user);
-router.post("/myFriends", UserController.my_friends);
-router.post("/friendRequests", UserController.friend_requests);
+router.get("/all", checkAuth, UserController.get_all_users);
+router.post("/searchUser", checkAuth, UserController.search_user);
+router.post("/myFriends", checkAuth, UserController.my_friends);
+router.post("/friendRequests", checkAuth, UserController.friend_requests);
 
 module.exports = router;
