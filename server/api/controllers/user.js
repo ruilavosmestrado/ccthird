@@ -60,7 +60,7 @@ exports.user_signup = (req, res, next) => {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0){
          		console.log(err);
-                res.status(500).json({error: err});
+                res.status(400).json({error: err});
        		}
     	}
 	});
