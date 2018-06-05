@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require('crypto');
 const config = require('../../config/DB');
 const AWS = require("aws-sdk");
+const uuidv4 = require('uuid/v4');
 
 AWS.config.update({accessKeyId: config.ACCESS_KEY, secretAccessKey: config.SECRET_KEY, region: "eu-west-1"});
 
@@ -15,7 +16,20 @@ const userTable = "user";
 const friendTable = "friendships";
 
 exports.user_signup = (req, res, next) => {
-  	if(!req.body.username || !req.body.password || !req.body.name){
+
+    var username = req.body.username;
+
+    if (req.body.gen) {
+        username = uuidv4();
+    } else if (!req.body.username) {
+        return res.status(409).json({
+            message: "Required fields missing"
+        });
+    } else {
+        username = req.body.username;
+    }
+
+  	if(!req.body.password || !req.body.name){
     	return res.status(409).json({
         	message: "Required fields missing"
       	});
