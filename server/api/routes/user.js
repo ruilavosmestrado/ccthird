@@ -9,5 +9,6 @@ router.post("/login", UserController.user_login);
 router.delete("/:userId", checkAuth, UserController.user_delete);
 router.get("/all", UserController.get_all_users);
 router.post("/searchUser", UserController.search_user);
+router.post("/friendship", UserController.user_friendship);
 
 module.exports = router;

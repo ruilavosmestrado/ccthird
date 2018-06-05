@@ -1,15 +1,49 @@
 'use strict';
 
-$('#saveProfileButton').on('click', function(event) {
+$(document).ready(function() {
+	var username = JSON.parse(localStorage.getItem('user'));
+	console.log("friendship");
+	console.log("username " + username);
 
-	console.log('update profile');
+    var postData = {
+    	username: username,
+    };
+	
+	let axiosConfig = {
+      headers: {
+          "Content-Type": "application/json"
+      },
+      crossdomain: true
+  	};
 
-	// post update profile
+ 	axios.post('http://localhost:3000/user/friendship', postData, axiosConfig)
+    .then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+      console.log(res.data.data);
+
+      $(".chat").append(
+						'<li class="left clearfix"><span class="chat-img pull-left">' +
+                            '<img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />' +
+                        '</span>' +
+                            '<div class="userlist-body clearfix">' +
+                                '<div class="header headername">' +
+                                    '<strong class="primary-font">Charles Dummont</strong>' +
+                                '</div>' +
+                                '<div class="buttonRight">' +
+                                    '<a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>' +
+                                    '<button type="button" class="btn btn-md btn-success">' +
+                                      '<span class="glyphicon glyphicon-plus"></span>' +
+                                    '</button>' +
+                                    '<button type="button" class="btn btn-md btn-danger">' +
+                                      '<span class="glyphicon glyphicon-minus"></span>' +
+                                    '</button>' +                                    
+                                '</div>' +
+                            '</div>' +
+                        '</li> ')
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    });
+
+
 });
-
-// get friend requests
-// post add friend from request
-// post remove friend from request
-
-// get friend list
-// post remove friend from list

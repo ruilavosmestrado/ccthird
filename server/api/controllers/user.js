@@ -176,6 +176,32 @@ exports.search_user = (req, res, next) => {
   });
 };
 
+exports.user_friendship = (req, res, next) => {
+  console.log('user ' + req.body.username);
+
+  var params = {
+      TableName : friendTable,
+      KeyConditionExpression: "userid1 = :username",
+      ExpressionAttributeValues: {
+          ":username":req.body.username
+      }
+  };
+
+  docClient.query(params, function(err, data) {
+      if (err) {
+        res.status(500).json({error: err});
+      } else {
+          console.log("Query succeeded.");
+          if(data.Items.length <= 0){
+            console.log(err);
+            res.status(500).json({error: err});
+            console.log("pedroErro n2");
+          }
+          res.status(201).json({data: data.Items});
+      }
+  });
+};
+
 
   /*User.find({ email: req.body.email })
     .exec()
