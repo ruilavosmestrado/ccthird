@@ -26,9 +26,10 @@ exports.user_signup = (req, res, next) => {
     }
 
   	if(!username || !req.body.password || !req.body.name){
-    	return res.status(409).json({
+        res.status(409).json({
         	message: "Required fields missing"
       	});
+        return;
   	}
 
   	const cipher = crypto.createCipher('aes192', req.body.password);
@@ -51,12 +52,14 @@ exports.user_signup = (req, res, next) => {
 
 	docClient.query(params, function(err, data) {
     	if (err) {
-    		return res.status(500).json({error: err});
+    		res.status(500).json({error: err});
+            return;
     	} else {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0){
          		console.log(err);
-                return res.status(400).json({error: 'user duplicated'});
+                res.status(400).json({error: 'user duplicated'});
+                return;
        		}
     	}
 	});
@@ -75,9 +78,11 @@ exports.user_signup = (req, res, next) => {
 	console.log("Adding a new user...");
  	docClient.put(params, function(err, data) {
     	if (err) {
-        	return res.status(500).json({error: err});
+        	res.status(500).json({error: err});
+            return;
     	} else {
         	res.status(201).json({message: "User created"});
+            return;
     	}
 	});
 };
