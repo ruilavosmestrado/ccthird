@@ -11,7 +11,8 @@ $(document).ready(function() {
       crossdomain: true
  	};
 
-	axios.get('http://localhost:3000/user/all', axiosConfig)
+  axios.get('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/all', axiosConfig)
+	//axios.get('http://localhost:3000/user/all', axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data);
@@ -61,7 +62,8 @@ $('#searchForm').on('submit', function(event) {
 
   //console.log("username " + $("#username").val());
 
-  axios.post('http://localhost:3000/user/searchUser', postData, axiosConfig)
+  axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/searchUser', postData, axiosConfig)
+  //axios.post('http://localhost:3000/user/searchUser', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data.data);
