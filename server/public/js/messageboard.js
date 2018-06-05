@@ -16,8 +16,8 @@ $(document).ready(function() {
       	crossdomain: true
   	};
 
-  	axios.get('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/messages/', axiosConfig) //server
-  	//axios.get('http://localhost:3000/messages/', axiosConfig) //local
+  	//axios.get('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/messages/', axiosConfig) //server
+  	axios.get('http://localhost:3000/messages/', axiosConfig) //local
     	.then((res) => {
       		console.log("RESPONSE RECEIVED: ", res);
 
@@ -77,8 +77,8 @@ $('#envio').on("submit", function(event) {
       			img: JSON.stringify(reader.result)
   			};
 
-  			axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/messages/create/', postData, axiosConfig)
-  			//axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
+  			//axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/messages/create/', postData, axiosConfig)
+  			axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
     			.then((res) => {
       				console.log("RESPONSE RECEIVED: ", res);
 
@@ -98,8 +98,8 @@ $('#envio').on("submit", function(event) {
       		img: null
   		};
 
-  		axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/messages/create/', postData, axiosConfig)
-  		//axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
+  		//axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/messages/create/', postData, axiosConfig)
+  		axios.post('http://localhost:3000/messages/create/', postData, axiosConfig)
     		.then((res) => {
       			console.log("RESPONSE RECEIVED: ", res);
 
