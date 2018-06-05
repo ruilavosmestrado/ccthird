@@ -15,7 +15,7 @@ $(document).ready(function() {
       crossdomain: true
   	};
 
- 	axios.post('http://localhost:3000/user/myFriends', postData, axiosConfig)
+ 	axios.post('http://ipleirialoadbalancer-8daa0b6af56825a7.elb.eu-west-1.amazonaws.com/user/myFriends', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data.data);
@@ -45,7 +45,7 @@ $(document).ready(function() {
       console.log("AXIOS ERROR: ", err);
     });
 
-  axios.post('http://localhost:3000/user/friendRequests', postData, axiosConfig)
+  axios.post('http://ipleirialoadbalancer-8daa0b6af56825a7.elb.eu-west-1.amazonaws.com/user/friendRequests', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data.data);

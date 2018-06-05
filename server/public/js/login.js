@@ -15,7 +15,7 @@ $('#signInButton').on('click', function(event) {
   };
 
   //axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/login', postData, axiosConfig)
-  axios.post('http://localhost:3000/user/login', postData, axiosConfig)
+  axios.post('http://ipleirialoadbalancer-8daa0b6af56825a7.elb.eu-west-1.amazonaws.com/user/login', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data);
