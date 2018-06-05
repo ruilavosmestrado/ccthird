@@ -7,6 +7,6 @@ const AWS = require("aws-sdk");
 AWS.config.update({accessKeyId: config.ACCESS_KEY, secretAccessKey: config.SECRET_KEY, region: "eu-west-1"});
 
 router.get("/", checkAuth, MessageController.get_messages);
-router.post("/create", checkAuth, upload.single('img'), MessageController.create_message);
+router.post("/create", checkAuth, MessageController.create_message);
 
 module.exports = router;
