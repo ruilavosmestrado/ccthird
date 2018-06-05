@@ -46,7 +46,7 @@ exports.user_signup = (req, res, next) => {
     	TableName : userTable,
     	KeyConditionExpression: "userid = :username",
     	ExpressionAttributeValues: {
-        	":username":req.body.username
+        	":username":username
     	}	
 	};
 
