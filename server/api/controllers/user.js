@@ -17,17 +17,18 @@ const friendTable = "friendships";
 
 exports.user_signup = (req, res, next) => {
 
-    var username;
+    let username;
 
     if (req.body.gen) {
         username = uuidv4();
-    } else if (!req.body.username) {
+    }  else {
+        username = req.body.username;
+    }
+
+    if (!username) {
         return res.status(409).json({
             message: "Required fields missing"
         });
-    } else {
-        username = req.body.username;
-    }
 
   	if(!req.body.password || !req.body.name){
     	return res.status(409).json({
