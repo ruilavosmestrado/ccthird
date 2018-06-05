@@ -12,6 +12,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 
 //const User = require("../models/user");
 const userTable = "user";
+const friendTable = "friendship";
 
 exports.user_signup = (req, res, next) => {
   	if(!req.body.username || !req.body.password || !req.body.name){
