@@ -56,7 +56,7 @@ exports.user_signup = (req, res, next) => {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0){
          		console.log(err);
-                return res.status(400).json({error: err});
+                return res.status(400).json({error: 'user duplicated'});
        		}
     	}
 	});
