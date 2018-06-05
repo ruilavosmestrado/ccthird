@@ -17,7 +17,7 @@ const friendTable = "friendships";
 
 exports.user_signup = (req, res, next) => {
 
-    var username = req.body.username;
+    var username;
 
     if (req.body.gen) {
         username = uuidv4();
