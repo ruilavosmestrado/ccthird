@@ -9,6 +9,7 @@ router.post("/login", UserController.user_login);
 router.delete("/:userId", checkAuth, UserController.user_delete);
 router.get("/all", UserController.get_all_users);
 router.post("/searchUser", UserController.search_user);
-router.post("/friendship", UserController.user_friendship);
+router.post("/myFriends", UserController.my_friends);
+router.post("/friendRequests", UserController.friend_requests);
 
 module.exports = router;

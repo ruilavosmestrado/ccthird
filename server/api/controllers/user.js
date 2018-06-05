@@ -175,7 +175,7 @@ exports.search_user = (req, res, next) => {
   });
 };
 
-exports.user_friendship = (req, res, next) => {
+exports.my_friends = (req, res, next) => {
   console.log('user ' + req.body.username);
 
   var params = {
@@ -218,8 +218,6 @@ exports.user_friendship = (req, res, next) => {
               item["img_photo"] = userData.Items.img_photo,
               item["name"] = userData.Items.name,
               item["username"] = userData.Items.username
-
-              console.log(item + "ensdlkfsdfnsjfdnjsdnfskdjnfksdnjfksjdnfkdsjnf");
             }
           });
           });
@@ -230,6 +228,59 @@ exports.user_friendship = (req, res, next) => {
   })
 };
 
+
+exports.friend_requests = (req, res, next) => {
+  console.log('user ' + req.body.username);
+
+  var params = {
+      TableName : friendTable,
+      FilterExpression: "userid2 = :username",
+      ExpressionAttributeValues: {
+          ":username":req.body.username
+      }
+  };
+
+  docClient.scan(params, function(err, data) {
+      if (err) {
+        res.status(500).json({error: err});
+      } else {
+          console.log("Query succeeded.");
+          if(data.Items.length <= 0){
+            console.log(err);
+            res.status(500).json({error: err});
+          }
+
+          data.Items.forEach(function(item) {
+            var params = {
+              TableName : userTable,
+              KeyConditionExpression: "userid = :username3",
+              ExpressionAttributeValues: {
+                ":username3":item.userid2
+              }
+            };
+
+          docClient.query(params, function(err, userData) {
+            if (err) {
+              res.status(500).json({error: err});
+            } else {
+              console.log("Query succeeded.");
+              if(userData.Items.length <= 0){
+                console.log(err);
+                res.status(500).json({error: err});
+              }
+
+              item["img_photo"] = userData.Items.img_photo,
+              item["name"] = userData.Items.name,
+              item["username"] = userData.Items.username
+            }
+          });
+          });
+
+          console.log(data.Items);
+          res.status(201).json({data: data.Items});
+      }
+  })
+};
 
   /*User.find({ email: req.body.email })
     .exec()

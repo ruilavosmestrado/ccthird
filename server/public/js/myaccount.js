@@ -2,7 +2,6 @@
 
 $(document).ready(function() {
 	var username = JSON.parse(localStorage.getItem('user'));
-	console.log("friendship");
 	console.log("username " + username);
 
     var postData = {
@@ -16,7 +15,7 @@ $(document).ready(function() {
       crossdomain: true
   	};
 
- 	axios.post('http://localhost:3000/user/friendship', postData, axiosConfig)
+ 	axios.post('http://localhost:3000/user/myFriends', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data.data);
@@ -24,13 +23,43 @@ $(document).ready(function() {
       res.data.data.forEach(function(user){
           console.log(user);
 
-        $(".chat").append(
+        $(".chatMyFriends").append(
 						'<li class="left clearfix"><span class="chat-img pull-left">' +
-                            '<img src="' + user.img_photo + '" alt="User Avatar" class="img-circle" />' +
+                            '<img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />' +
                         '</span>' +
                             '<div class="userlist-body clearfix">' +
                                 '<div class="header headername">' +
                                     '<strong class="primary-font">' + user.userid2 + '</strong>' +
+                                '</div>' +
+                                '<div class="buttonRight">' +
+                                    '<a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>' +
+                                    '<button type="button" class="btn btn-md btn-danger">' +
+                                      '<span class="glyphicon glyphicon-minus"></span>' +
+                                    '</button>' +                                    
+                                '</div>' +
+                            '</div>' +
+                        '</li> ')
+      });
+    })
+    .catch((err) => {
+      console.log("AXIOS ERROR: ", err);
+    });
+
+  axios.post('http://localhost:3000/user/friendRequests', postData, axiosConfig)
+    .then((res) => {
+      console.log("RESPONSE RECEIVED: ", res);
+      console.log(res.data.data);
+
+      res.data.data.forEach(function(user){
+          console.log(user);
+
+        $(".chatFriendRequest").append(
+            '<li class="left clearfix"><span class="chat-img pull-left">' +
+                            '<img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />' +
+                        '</span>' +
+                            '<div class="userlist-body clearfix">' +
+                                '<div class="header headername">' +
+                                    '<strong class="primary-font">' + user.userid1 + '</strong>' +
                                 '</div>' +
                                 '<div class="buttonRight">' +
                                     '<a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>' +
@@ -48,6 +77,5 @@ $(document).ready(function() {
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);
     });
-
 
 });
