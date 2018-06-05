@@ -12,7 +12,7 @@ $(document).ready(function() {
  	};
 
   //axios.get('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/all', axiosConfig)
-	axios.get('http://ipleirialoadbalancer-8daa0b6af56825a7.elb.eu-west-1.amazonaws.com/user/all', axiosConfig)
+	axios.get('http://loadbalancerrui2-1532324241.eu-west-1.elb.amazonaws.com/user/all', axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data);
@@ -62,9 +62,9 @@ $('#searchForm').on('submit', function(event) {
 
   //console.log("username " + $("#username").val());
 
-  
+
   //axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/searchUser', postData, axiosConfig)
-  axios.post('http://ipleirialoadbalancer-8daa0b6af56825a7.elb.eu-west-1.amazonaws.com/user/searchUser', postData, axiosConfig)
+  axios.post('http://loadbalancerrui2-1532324241.eu-west-1.elb.amazonaws.com/user/searchUser', postData, axiosConfig)
     .then((res) => {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data.data);

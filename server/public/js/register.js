@@ -20,7 +20,7 @@ $('#signUpButton').on('click', function(event) {
    		password: password
 	};
 
-	axios.post('http://ipleirialoadbalancer-8daa0b6af56825a7.elb.eu-west-1.amazonaws.com/user/signup', postData, axiosConfig)
+	axios.post('http://loadbalancerrui2-1532324241.eu-west-1.elb.amazonaws.com/user/signup', postData, axiosConfig)
   	//axios.post('http://ec2-52-51-205-247.eu-west-1.compute.amazonaws.com/user/signup', postData, axiosConfig)
   	//axios.post('http://localhost:3000/user/signup', postData, axiosConfig)
     	.then((res) => {
