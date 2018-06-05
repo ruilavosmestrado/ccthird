@@ -12,7 +12,7 @@ var docClient = new AWS.DynamoDB.DocumentClient();
 
 //const User = require("../models/user");
 const userTable = "user";
-const friendTable = "friendship";
+const friendTable = "friendships";
 
 exports.user_signup = (req, res, next) => {
   	if(!req.body.username || !req.body.password || !req.body.name){
@@ -164,13 +164,11 @@ exports.search_user = (req, res, next) => {
   docClient.query(params, function(err, data) {
       if (err) {
         res.status(500).json({error: err});
-        console.log("pedroErro n1");
       } else {
           console.log("Query succeeded.");
           if(data.Items.length <= 0){
             console.log(err);
             res.status(500).json({error: err});
-            console.log("pedroErro n2");
           }
           res.status(201).json({data: data.Items});
       }
@@ -182,13 +180,13 @@ exports.user_friendship = (req, res, next) => {
 
   var params = {
       TableName : friendTable,
-      KeyConditionExpression: "userid1 = :username",
+      FilterExpression: "userid1 = :username",
       ExpressionAttributeValues: {
           ":username":req.body.username
       }
   };
 
-  docClient.query(params, function(err, data) {
+  docClient.scan(params, function(err, data) {
       if (err) {
         res.status(500).json({error: err});
       } else {
@@ -196,11 +194,40 @@ exports.user_friendship = (req, res, next) => {
           if(data.Items.length <= 0){
             console.log(err);
             res.status(500).json({error: err});
-            console.log("pedroErro n2");
           }
+
+          data.Items.forEach(function(item) {
+            var params = {
+              TableName : userTable,
+              KeyConditionExpression: "userid = :username2",
+              ExpressionAttributeValues: {
+                ":username2":item.userid2
+              }
+            };
+
+          docClient.query(params, function(err, userData) {
+            if (err) {
+              res.status(500).json({error: err});
+            } else {
+              console.log("Query succeeded.");
+              if(userData.Items.length <= 0){
+                console.log(err);
+                res.status(500).json({error: err});
+              }
+
+              item["img_photo"] = userData.Items.img_photo,
+              item["name"] = userData.Items.name,
+              item["username"] = userData.Items.username
+
+              console.log(item + "ensdlkfsdfnsjfdnjsdnfskdjnfksdnjfksjdnfkdsjnf");
+            }
+          });
+          });
+
+          console.log(data.Items);
           res.status(201).json({data: data.Items});
       }
-  });
+  })
 };
 
 

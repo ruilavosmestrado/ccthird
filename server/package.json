@@ -11,6 +11,7 @@
   "dependencies": {
     "aws-sdk": "^2.244.1",
     "axios": "^0.18.0",
+    "bcrypt": "^2.0.1",
     "crypto": "^1.0.1",
     "dotenv": "^6.0.0",
     "dynamodb": "^1.1.1",

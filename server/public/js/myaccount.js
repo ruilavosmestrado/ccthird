@@ -21,13 +21,16 @@ $(document).ready(function() {
       console.log("RESPONSE RECEIVED: ", res);
       console.log(res.data.data);
 
-      $(".chat").append(
+      res.data.data.forEach(function(user){
+          console.log(user);
+
+        $(".chat").append(
 						'<li class="left clearfix"><span class="chat-img pull-left">' +
-                            '<img src="img_photo/unknown.png" alt="User Avatar" class="img-circle" />' +
+                            '<img src="' + user.img_photo + '" alt="User Avatar" class="img-circle" />' +
                         '</span>' +
                             '<div class="userlist-body clearfix">' +
                                 '<div class="header headername">' +
-                                    '<strong class="primary-font">Charles Dummont</strong>' +
+                                    '<strong class="primary-font">' + user.userid2 + '</strong>' +
                                 '</div>' +
                                 '<div class="buttonRight">' +
                                     '<a href="profile.html" type="button"  class="btn btn-md btn-info"><span class="glyphicon glyphicon-option-horizontal"></span></a>' +
@@ -40,6 +43,7 @@ $(document).ready(function() {
                                 '</div>' +
                             '</div>' +
                         '</li> ')
+      });
     })
     .catch((err) => {
       console.log("AXIOS ERROR: ", err);
