@@ -55,7 +55,7 @@ exports.user_signup = (req, res, next) => {
 
 	docClient.query(params, function(err, data) {
     	if (err) {
-    		res.status(500).json({error: err});
+    		return res.status(500).json({error: err});
     	} else {
         	console.log("Query succeeded.");
         	if(data.Items.length > 0){
@@ -79,7 +79,7 @@ exports.user_signup = (req, res, next) => {
 	console.log("Adding a new user...");
  	docClient.put(params, function(err, data) {
     	if (err) {
-        	res.status(500).json({error: err});
+        	return res.status(500).json({error: err});
     	} else {
         	res.status(201).json({message: "User created"});
     	}
