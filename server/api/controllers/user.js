@@ -81,8 +81,8 @@ exports.user_signup = (req, res, next) => {
         	res.status(500).json({error: err});
             return;
     	} else {
-        	res.status(201).json({message: "User created"});
-            return;
+        	return res.status(201).json({message: "User created"});
+            
     	}
 	});
 };
