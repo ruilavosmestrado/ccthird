@@ -55,6 +55,10 @@ $(document).ready(function() {
 $('#envio').on("submit", function(event) {
 	event.preventDefault();
 
+  if (localStorage.getItem('token') == null) {
+    $(location).attr('href', 'login.html');
+  } 
+
 	var reader;
 	var img;
 
